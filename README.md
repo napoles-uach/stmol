@@ -9,5 +9,8 @@ $ pip install streamlit
 Then you can run
 $ streamlit run sub0.py
 
+<p>
+ You will get something like this: 
+
 ![GitHub Logo](https://github.com/napoles-uach/figuras/blob/master/Captura%20de%20pantalla%202020-07-29%20a%20la(s)%2013.24.04.png)
 
