@@ -8,9 +8,7 @@ You can install with:
 ```python
 pip install stmol
 ```
-Go to tests directory and then you can run
-<p>
-$ streamlit run test.py
+
 ## Example
 
 ```python
