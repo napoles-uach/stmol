@@ -11,6 +11,15 @@ pip install stmol
 Go to tests directory and then you can run
 <p>
 $ streamlit run test.py
+## Example
+
+```python
+import streamlit as st
+from stmol import component_3dmol
+
+st.title('Hello 3dmol component!!')
+component_3dmol()
+```
 
 <p>
  You will get something like this: 
