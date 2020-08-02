@@ -7,6 +7,7 @@ You can install with:
 pip install stmol
 
 Go to tests directory and then you can run
+<p>
 $ streamlit run test.py
 
 <p>
