@@ -20,5 +20,5 @@ component_3dmol()
 
 
 
-![GitHub Logo](https://github.com/napoles-uach/figuras/blob/master/Captura%20de%20pantalla%202020-07-29%20a%20la(s)%2013.24.04.png)
+![GitHub Logo](https://github.com/napoles-uach/figuras/blob/master/stmol_image.png)
 
