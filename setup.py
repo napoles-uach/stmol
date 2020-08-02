@@ -1,14 +1,14 @@
 import setuptools
 
 setuptools.setup(
-    name="streamlit-3Dmol",
-    version="0.0.1",
+    name="stmol",
+    version="0.0.4",
     author="Jose Manuel Napoles Duarte",
     author_email="jnapoles@uach.mx",
     description="Streamlit component for molecular visualization",
-    long_description="",
+    long_description="stmol is based on popular visualization software 3Dmol.js",
     long_description_content_type="text/plain",
-    url="",
+    url="https://github.com/napoles-uach/streamlit_3dmol",
     packages=setuptools.find_packages(),
     include_package_data=True,
     classifiers=[],

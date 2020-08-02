@@ -123,7 +123,5 @@ def component_3dmol():
 ''',width=800,height=800)
     return 
 
-st.subheader("Test de componente")
 
-com=component_3dmol()
 
