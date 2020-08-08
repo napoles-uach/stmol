@@ -22,3 +22,11 @@ component_3dmol()
 
 ![GitHub Logo](https://github.com/napoles-uach/figuras/blob/master/stmol_image.png)
 
+## Acknowledgment
+If this software is useful in your work, please use the following citation:
+
+Nicholas Rego and David Koes
+3Dmol.js: molecular visualization with WebGL
+Bioinformatics (2015) 31 (8): 1322-1324 doi:10.1093/bioinformatics/btu829
+
+
