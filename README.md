@@ -24,7 +24,9 @@ component_3dmol()
 
 ## Acknowledgment
 If this software is useful in your work, please consider citing this repo:
-
+<p>
+https://github.com/napoles-uach/streamlit_3dmol
+<p>
 and use the following citation:
 
 Nicholas Rego and David Koes
