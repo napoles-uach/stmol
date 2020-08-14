@@ -1,5 +1,6 @@
 import streamlit.components.v1 as components
 
+
 def component_3dmol(width=800, height=800):
     """
     Renders a molecule component
@@ -12,7 +13,6 @@ def component_3dmol(width=800, height=800):
     height : int
         height of component
     """
-    
     components.html('''
 <head>
     <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
@@ -133,6 +133,15 @@ def component_3dmol(width=800, height=800):
     <input type="button" value="Stick" onclick="glviewer.setStyle({},{stick:{}}); glviewer.render();"></input>
 
     <input type="button" value="Sphere" onclick="glviewer.setStyle({},{sphere:{}}); glviewer.render();"></input>
+
+    <br>
+
+    Change box opacity
+
+    <input type="range" min="0" max="100" value="50" class="slider" id="opacitySlider">
+    <input type="button" value="Render box"
+        onclick="glviewer.addBox({center:{x:200,y:180,z:160},dimensions: {w:60,h:60,d:80},color:'magenta',opacity: document.getElementById('opacitySlider').value / 100});glviewer.render();"></input>
+
     <br>
 
     For proteins
