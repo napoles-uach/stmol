@@ -1,6 +1,18 @@
 import streamlit.components.v1 as components
 
 def component_3dmol(width=800, height=800):
+    """
+    Renders a molecule component
+
+    Parameters
+    ----------
+    width : int
+        width of component
+    
+    height : int
+        height of component
+    """
+    
     components.html('''
 <head>
     <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
@@ -133,6 +145,3 @@ def component_3dmol(width=800, height=800):
 </body>
 ''', width=width, height=height)
     return 
-
-
-
