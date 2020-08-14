@@ -1,6 +1,6 @@
 import streamlit.components.v1 as components
 
-def component_3dmol():
+def component_3dmol(width=800, height=800):
     components.html('''
 <head>
     <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
@@ -131,7 +131,7 @@ def component_3dmol():
     <input type="button" value="Color SS" onclick="colorSS(glviewer);"></input>
 
 </body>
-''',width=800,height=800)
+''', width=width, height=height)
     return 
 
 
