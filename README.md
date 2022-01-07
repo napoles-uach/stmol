@@ -28,7 +28,7 @@ showmol(xyzview, height = 500,width=800)
 
 
 
-![GitHub Logo](https://github.com/napoles-uach/figuras/blob/master/stmol_image.png)
+![gif](https://github.com/napoles-uach/streamlit_3dmol/blob/master/BRQqqfZ2lU.gif)
 
 ## Acknowledgment
 If this software is useful in your work, please consider citing this repo:
