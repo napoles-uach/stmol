@@ -23,7 +23,6 @@ style = st.sidebar.selectbox('style',['line','cross','stick','sphere','cartoon',
 xyzview = py3Dmol.view(query='pdb:'+protein)
 xyzview.setStyle({style:{'color':'spectrum'}})
 xyzview.setBackgroundColor(bcolor)
-#html_mol = xyzview._make_html()
 showmol(xyzview, height = 500,width=800)
 ```
 
