@@ -1,5 +1,6 @@
 # streamlit_3dmol
 This project aims to provide an easy way to create a web app for interacting with molecular structures using Streamlit. 
+Use `showmol` function to render py3Dmol objects!
 
 
 ## Installation
@@ -31,7 +32,7 @@ showmol(xyzview, height = 500,width=800)
 ![gif](https://github.com/napoles-uach/streamlit_3dmol/blob/master/BRQqqfZ2lU.gif)
 
 ## Acknowledgment
-If this software is useful in your work, please consider citing this repo:
+If this software is useful in your work, please star and consider citing this repo:
 <p>
 https://github.com/napoles-uach/streamlit_3dmol
 <p>
