@@ -34,7 +34,7 @@ showmol(xyzview, height = 500,width=800)
 
 Check the blogpost https://towardsdatascience.com/molecular-visualization-in-streamlit-using-rdkit-and-py3dmol-part-2-657d28152753
 ## Acknowledgment
-If this software is useful in your work, please star and consider citing this repo:
+If this software is useful in your work, please star and consider staring this repo :star:
 <p>
 https://github.com/napoles-uach/streamlit_3dmol
 <p>
