@@ -6,6 +6,7 @@ Use `showmol` function to render py3Dmol objects!
 ## Installation
 
 ```python
+pip install py3Dmol
 pip install stmol
 ```
 
@@ -31,6 +32,7 @@ showmol(xyzview, height = 500,width=800)
 
 ![gif](https://github.com/napoles-uach/streamlit_3dmol/blob/master/BRQqqfZ2lU.gif)
 
+Check the blogpost https://towardsdatascience.com/molecular-visualization-in-streamlit-using-rdkit-and-py3dmol-part-2-657d28152753
 ## Acknowledgment
 If this software is useful in your work, please star and consider citing this repo:
 <p>
