@@ -7,7 +7,7 @@ Use `showmol` function to render py3Dmol objects!
 
 ```python
 pip install py3Dmol
-pip install stmol
+pip install stmol==0.0.7
 ```
 
 ## Example
