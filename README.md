@@ -1,4 +1,4 @@
-# streamlit_3dmol
+# st(reamlit_3d)mol
 This project aims to provide an easy way to create a web app for interacting with molecular structures using Streamlit. 
 Use `showmol` function to render py3Dmol objects!
 
