@@ -1,5 +1,6 @@
 import os
 import streamlit.components.v1 as components
+from utils import *
 
 def showmol(mol_obj,height=500,width=500):
     components.html(mol_obj._make_html(), height = height,width=width)
