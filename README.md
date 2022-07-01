@@ -30,7 +30,7 @@ showmol(xyzview, height = 500,width=800)
 
 
 
-![gif](https://github.com/napoles-uach/streamlit_3dmol/blob/master/Resources/demo.gif)
+![gif](https://github.com/avrabyt/stmol/blob/master/Resources/demo.gif)
 
 Check the blogpost https://towardsdatascience.com/molecular-visualization-in-streamlit-using-rdkit-and-py3dmol-part-2-657d28152753
 ## Acknowledgment
