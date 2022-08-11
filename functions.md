@@ -15,36 +15,39 @@ showmol(obj,height=500,width=500)
     -------
     None.
     """
-draw_mol(smi)
-    """
-    draw_mol function accepts a smiles string and returns an image.
-     
-    Parameters
-    ----------
-    smi: String
-        Is the smiles string of the molecule.
-        Example: SMILES string for Caffeine: 'CN1C=NC2=C1C(=O)N(C(=O)N2C)C'
-    
-    Returns
-    -------
-    im: Image
-    """
-    
-makeblock(smi)
-    """
-    makeblock function accepts a smiles string and returns a RDKit molblock object
-    which can be used as a mol structure by py3Dmol.
 
+speck_plot(_xyz, wbox_height="700px", 
+            wbox_width="800px",
+            component_h = 700, 
+            component_w = 800, 
+            scroll = False)
+    """ Plots the speckmol molecule using the ipyspeck library and returns 
+        the <class 'ipyspeck.speck.Speck'>.
+    
     Parameters
     ----------
-    smi: String
-        Is the smiles string of the molecule.
-        Example: SMILES string for Caffeine: 'CN1C=NC2=C1C(=O)N(C(=O)N2C)C'
-    
+    _xyz : str
+        The xyz string of the molecule.
+    wbox_height : str
+        The height of the widget box.
+    wbox_width : str
+        The width of the widget box.
+    component_h : int
+        The height of the streamlit html component.
+    component_w : int
+        The width of the streamlit html component.
+    scroll : bool
+        If True, the streamlit component will scroll.  
     Returns
     -------
-    molblock: String
-    """
+    spec_xyz : <class 'ipyspeck.speck.Speck'>
+        The speckmol molecule. spec_xyz.keys() returns the keys of the
+        molecule. For example - spec_xyz.keys() returns ['atomScale',  
+        'bondScale', 'atomShade', 'bondThreshold', 'bondColor', 'atomColor',
+        'outline', 'bonds', 'atomScale', 'atomColor', 'atomScale', 'atomScale]
+        These keys are useful for modifying the molecule.
+    """      
+
 makeobj(xyz,molformat='mol',style='stick',background='white')
     """
     makeobj function accepts a molecule structure in a given format and returns a Py3DMOL molecule object.
