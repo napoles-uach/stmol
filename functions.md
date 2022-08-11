@@ -84,6 +84,7 @@ render_pdb_resn(viewer,resn_lst)
 
     Parameters
     ----------
+    viewer: Py3DMOL object
     resn_lst: List
         Is the list of PDB resn of the molecules. Example: ['ALA','ARG',,'LYS','THR','TRP','TYR','VAL']
     
@@ -97,6 +98,7 @@ render_pdb_resi(viewer,resi_lst)
 
     Parameters
     ----------
+    viewer: Py3DMOL object
     resi_lst: List
         Is the list of PDB resi of the molecules. Example: ['42-44','48','49']
     
