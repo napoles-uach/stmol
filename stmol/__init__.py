@@ -1,5 +1,7 @@
 import os
 import streamlit.components.v1 as components
+import ipywidgets as widgets
+from ipywidgets import embed
 import py3Dmol
 import ipyspeck
 
