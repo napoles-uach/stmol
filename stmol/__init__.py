@@ -1,238 +1,341 @@
 import os
 import streamlit.components.v1 as components
-from utils import *
+import py3Dmol
+import ipyspeck
 
 def showmol(mol_obj,height=500,width=500):
-    components.html(mol_obj._make_html(), height = height,width=width)
-
-
-def component_3dmol(width=800, height=800):
-    """
-    Renders a molecule component
+    """Shows the Py3DMOL object.
 
     Parameters
     ----------
-    width : int
-        width of component
+    obj: Py3DMOL object
+        Already existing Py3DMOL object, which can be created using the makeobj function.
+    height: Integer, default 500
+        Is the height of viwer window.
+    width: Integer, default 500
+        Is the width of wiewer window.
     
-    height : int
-        height of component
+    Returns
+    -------
+    None.
     """
-    components.html('''
-<head>
-    <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+    components.html(mol_obj._make_html(), height = height,width=width)
 
-    <form enctype="multipart/form-data">
-        <input id="ligand" type="file" />
-    </form>
+def speck_plot(_xyz, wbox_height="700px", 
+            wbox_width="800px",
+            component_h = 700, 
+            component_w = 800, 
+            scroll = False):
 
-    <script>
-        var glviewer = null;
-        var labels = [];
+    """ Plots the speckmol molecule using the ipyspeck library and returns 
+        the <class 'ipyspeck.speck.Speck'>.
+    
+    Parameters
+    ----------
+    _xyz : str
+        The xyz string of the molecule.
+    wbox_height : str
+        The height of the widget box.
+    wbox_width : str
+        The width of the widget box.
+    component_h : int
+        The height of the streamlit html component.
+    component_w : int
+        The width of the streamlit html component.
+    scroll : bool
+        If True, the streamlit component will scroll.  
+    Returns
+    -------
+    spec_xyz : <class 'ipyspeck.speck.Speck'>
+        The speckmol molecule. spec_xyz.keys() returns the keys of the
+        molecule. For example - spec_xyz.keys() returns ['atomScale',  
+        'bondScale', 'atomShade', 'bondThreshold', 'bondColor', 'atomColor',
+        'outline', 'bonds', 'atomScale', 'atomColor', 'atomScale', 'atomScale]
+        These keys are useful for modifying the molecule.
+    """        
+    # Read the xyz file
+    spec_xyz = ipyspeck.speck.Speck(data = _xyz)
+    # Create the widget box
+    widg = widgets.Box([spec_xyz], layout=widgets.Layout(height=wbox_height,width=wbox_width))
+    # Embed the widget box in the streamlit html component
+    sc = embed.embed_snippet(widg)
+    html = embed.html_template.format(title="", snippet=sc)
+    components.html(html,height = component_h, width = component_w,scrolling=scroll)
+    return spec_xyz
 
-        var colorSS = function (viewer) {
-            //color by secondary structure
-            var m = viewer.getModel();
-            m.setColorByFunction({}, function (atom) {
-                if (atom.ss == 'h') return "magenta";
-                else if (atom.ss == 's') return "orange";
-                else return "white";
-            });
-            viewer.render();
-        }
+def makeobj(xyz,molformat='mol',style='stick',background='white'):
+    """
+    makeobj function accepts a molecule structure in a given format and returns a Py3DMOL molecule object.
+    Accepted formats are 'mol', 'sdf', 'pdb', 'pqr', 'xyz'.
 
-        var atomcallback = function (atom, viewer) {
-            if (atom.clickLabel === undefined
-                || !atom.clickLabel instanceof $3Dmol.Label) {
-                atom.clickLabel = viewer.addLabel(atom.elem + atom.serial, {
-                    fontSize: 14,
-                    position: {
-                        x: atom.x,
-                        y: atom.y,
-                        z: atom.z
-                    },
-                    backgroundColor: "black"
-                });
-                atom.clicked = true;
-            }
+    Parameters
+    ----------
+    xyz: String
+        Is the molecule object
+    molformat: String, default 'mol'    
+        Is the format of the molecule. Accepted formats are 'mol', 'sdf', 'pdb', 'pqr', 'xyz'.
+    style: String, default 'stick'
+        Is the style of the molecule. Can be 'stick', 'sphere', 'cross', 'surface', 'ribbon', 'cartoon'
+    background: String, default 'white'
+        Is the background color of the molecule
+    
+    Returns
+    -------
+    obj: Py3DMOL object
+    """
+    xyzview = py3Dmol.view()
+    xyzview.addModel(xyz,molformat)
+    xyzview.setStyle({style:{}})
+    xyzview.setBackgroundColor(background)
+    xyzview.zoomTo()
+    return xyzview
 
-            //toggle label style
-            else {
+def render_pdb(id='7T59'):
+    """
+    render_pdb function accepts a PDB ID and returns a Py3DMOL object.
+    Example:
+        obj=render_pdb()
+        showmol(obj)
 
-                if (atom.clicked) {
-                    var newstyle = atom.clickLabel.getStyle();
-                    newstyle.backgroundColor = 0x66ccff;
+    Parameters
+    ----------
+    id: String, default '7T59'
+        Is the PDB ID of the molecule.
+    
+    Returns
+    -------
+    obj: Py3DMOL object
+    """
+    viewer = py3Dmol.view(query=id)
+    viewer.setStyle({ "cartoon": {
+        "color": "spectrum",
+        "colorReverse": True,
+        "colorScale": "RdYlGn",
+        "colorScheme": "Polarity",
+        "colorBy": "resname",
+            }})
+    return viewer
 
-                    viewer.setLabelStyle(atom.clickLabel, newstyle);
-                    atom.clicked = !atom.clicked;
+def render_pdb_resn(viewer,resn_lst):
+    """
+    render_pdb_resn function accepts a Py3DMOL object and adds a list of PDB resn labels to it.
+    Example:
+        showmol(render_pdb_resn(render_pdb(),['ALA',]) )
+
+    Parameters
+    ----------
+    viewer: Py3DMOL object
+    resn_lst: List
+        Is the list of PDB resn of the molecules. Example: ['ALA','ARG',,'LYS','THR','TRP','TYR','VAL']
+    
+    Returns
+    -------
+    obj: Py3DMOL object
+    """
+    viewer.setStyle({ "cartoon": {"color": "spectrum","colorBy": "resname",}})
+    viewer.setStyle({'bonds':0},{'sphere':{'radius':0.3}})
+    viewer.addResLabels({'resn':resn_lst,})
+    return viewer
+
+def render_pdb_resi(viewer,resi_lst):
+    """
+    render_pdb_resi function accepts a Py3DMOL object and adds a list of PDB resi labels to it.
+    Example:
+        showmol(render_pdb_resi(render_pdb(),['442-444']))
+
+    Parameters
+    ----------
+    viewer: Py3DMOL object
+    resi_lst: List
+        Is the list of PDB resi of the molecules. Example: ['42-44','48','49']
+    
+    Returns
+    -------
+    obj: Py3DMOL object
+    """
+    viewer.setStyle({"cartoon": {"color": "spectrum","colorBy": "resname",}})
+    viewer.setStyle({'bonds':0},{'sphere':{'radius':0.3}})
+    viewer.addResLabels({'resi':resi_lst,})
+    return viewer
+
+def obj_upload(uploaded_file):
+    """
+    obj_upload function accepts a file uploaded with streamlit file_uploader function and returns a Py3DMOL object.
+    Accepted formats are 'mol', 'sdf', 'pdb', 'pqr', 'xyz'.
+    Example:
+        uploaded_file = st.sidebar.file_uploader("Upload PDB file")
+        if uploaded_file is not None:
+            prot = obj_upload(uploaded_file)
+            showmol(prot)
+
+    Parameters
+    ----------
+    uploaded_file: File
+        Is the PDB, xyz or any supported file of the molecule
+    
+    Returns
+    -------
+    obj: Py3DMOL object
+    """
+       
+    pdbxyz = uploaded_file.getvalue().decode("utf-8")
+    prot=makeobj(xyz=pdbxyz,molformat='pdb',style='stick',background='white')
+    return prot
+
+def add_model(obj,xyz,molformat='mol',model_style='stick'):
+    """
+    Adds a model to an existing Py3DMOL object.
+    
+    Parameters
+    ----------
+    obj: Py3DMOL object
+        Already existing Py3DMOL object.
+    xyz: String
+        Is the model to be added.
+    molformat: String, default 'mol'    
+        Is the format of the added model
+    model_style: String, default 'stick'
+        Is the style of the added model. Can be 'stick', 'sphere', 'cross', 'surface', 'ribbon', 'cartoon'
+    
+    Returns
+    -------
+    None.
+    """
+    obj.addModel(xyz,molformat)
+    obj.setStyle({'model':-1},{model_style:{}})
+
+def add_hover(obj,backgroundColor='white',fontColor='black'):
+    """
+    Adds a hover function to the Py3DMOL object to show the atom name when the mouse hovers over an atom.
+    Example:
+        obj = render_pdb()
+        add_hover(obj)
+        showmol(obj)
+
+    Parameters
+    ----------
+    obj: Py3DMOL object
+        Already existing Py3DMOL object, which can be created using the makeobj function.
+    backgroundColor: String, default 'white'
+        Is the background color of the hover text
+    fontColor: String, default 'black'
+        Is the color of the text
+
+    Returns
+    -------
+    None.
+    """
+
+    js_script = """function(atom,viewer) {
+                   if(!atom.label) {
+                    atom.label = viewer.addLabel(atom.atom+':'+atom.serial,{position: atom, backgroundColor:"%s" , fontColor:"%s"});
                 }
-                else {
-                    viewer.removeLabel(atom.clickLabel);
-                    delete atom.clickLabel;
-                    atom.clicked = false;
-                }
+              }"""%(backgroundColor,fontColor)
+    obj.setHoverable({},True,js_script,
+               """function(atom,viewer) {
+                   if(atom.label) {
+                    viewer.removeLabel(atom.label);
+                    delete atom.label;
+                   }
+                }"""
+               )
 
-            }
-        };
-        var readText = function (input, func) {
-            if (input.files.length > 0) {
-                var file = input.files[0];
-                var reader = new FileReader();
-                reader.onload = function (evt) {
-                    func(evt.target.result, file.name);
-                };
-                reader.readAsText(file);
-                $(input).val('');
-            }
-        };
+def add_box(obj,bxc=[0,0,0],bxd=[10,10,10],boxColor='blue',boxOpacity=0.5): 
+    """
+    Adds a box to an existing Py3DMOL object.
+    Example:
+        obj = render_pdb()
+        add_box(obj)
+        showmol(obj)
 
-        $(document).ready(function () {
-
-            moldata = data = $("#ligand").val();
-            glviewer = $3Dmol.createViewer("gldiv", {
-                defaultcolors: $3Dmol.rasmolElementColors
-            });
-            glviewer.setBackgroundColor(0xffffff);
-
-            receptorModel = m = glviewer.addModel(data, "pqr");
-
-            atoms = m.selectedAtoms({});
-
-            for (var i in atoms) {
-                var atom = atoms[i];
-                atom.clickable = true;
-                atom.callback = atomcallback;
-            }
-
-            glviewer.mapAtomProperties($3Dmol.applyPartialCharges);
-            glviewer.zoomTo();
-            glviewer.render();
-        });
-    </script>
-</head>
-
-<body>
-
-    <div id="gldiv" style="width: 100%; height: 40vh; margin: 0; padding: 0; border: 0;"></div>
-
-    <hr style="margin: 0;">
-
-    <br>
-    Set structure Identifier (For example 6VXX) and click download:
-
-    <input id="pdbid" value="6VXX" size=4>
-    <button
-        onclick="glviewer.clear(); m = $3Dmol.download('pdb:' + $('#pdbid').val(), glviewer, {doAssembly:true, noSecondaryStructure: false});">Download</button>
-
-    <br>
-
-    or upload local file <input type="file"
-        onchange="readText(this, function(data, name) {glviewer.clear(); m= glviewer.addModel(data,name); glviewer.zoomTo(); glviewer.render();} );">
-    <br>
-    <hr>
-    <br>
-    <p style="font-size:22px;">Customize visualization:</p>
-
-    For small molecules
-
-    <input type="button" value="Stick" onclick="glviewer.setStyle({},{stick:{}}); glviewer.render();"></input>
-
-    <input type="button" value="Sphere" onclick="glviewer.setStyle({},{sphere:{}}); glviewer.render();"></input>
-
-    <br>
-
-    Change box opacity
-
-    <input type="range" min="0" max="100" value="50" class="slider" id="opacitySlider">
-    <input type="button" value="Render box"
-        onclick="glviewer.addBox({center:{x:200,y:180,z:160},dimensions: {w:60,h:60,d:80},color:'magenta',opacity: document.getElementById('opacitySlider').value / 100});glviewer.render();"></input>
-
-    <br>
-
-    For proteins
-
-    <input type="button" value="Cartoon"
-        onclick="glviewer.setStyle({hetflag:false},{cartoon:{}}); glviewer.render();"></input>
-
-    <input type="button" value="Color SS" onclick="colorSS(glviewer);"></input>
-
-</body>
-''', width=width, height=height)
-    return 
-
-########### The part below is for making the component bidirectional
-########### In may not interfere with the code above
-
-
-
-# Create a _RELEASE constant. We'll set this to False while we're developing
-# the component, and True when we're ready to package and distribute it.
-# (This is, of course, optional - there are innumerable ways to manage your
-# release process.)
-_RELEASE = False
-
-# Declare a Streamlit component. `declare_component` returns a function
-# that is used to create instances of the component. We're naming this
-# function "_component_func", with an underscore prefix, because we don't want
-# to expose it directly to users. Instead, we will create a custom wrapper
-# function, below, that will serve as our component's public API.
-
-# It's worth noting that this call to `declare_component` is the
-# *only thing* you need to do to create the binding between Streamlit and
-# your component frontend. Everything else we do in this file is simply a
-# best practice.
-
-if not _RELEASE:
-    _component_func = components.declare_component(
-        # We give the component a simple, descriptive name ("my_component"
-        # does not fit this bill, so please choose something better for your
-        # own component :)
-        "my_component",
-        # Pass `url` here to tell Streamlit that the component will be served
-        # by the local dev server that you run via `npm run start`.
-        # (This is useful while your component is in development.)
-        url="http://localhost:3001",
-    )
-else:
-    # When we're distributing a production version of the component, we'll
-    # replace the `url` param with `path`, and point it to to the component's
-    # build directory:
-    parent_dir = os.path.dirname(os.path.abspath(__file__))
-    build_dir = os.path.join(parent_dir, "frontend/build")
-    _component_func = components.declare_component("my_component", path=build_dir)
-
-
-# Create a wrapper function for the component. This is an optional
-# best practice - we could simply expose the component function returned by
-# `declare_component` and call it done. The wrapper allows us to customize
-# our component's API: we can pre-process its input args, post-process its
-# output value, and add a docstring for users.
-def my_component(title,subtitle,body,link,color):
-    """Create a new instance of "my_component".
- """
-    # Call through to our private component function. Arguments we pass here
-    # will be sent to the frontend, where they'll be available in an "args"
-    # dictionary.
-    #
-    # "default" is a special argument that specifies the initial return
-    # value of the component before the user has interacted with it.
-    _ = _component_func(
-        title=title,subtitle=subtitle,body=body,link=link,color=color)
+    Parameters
+    ----------
+    obj: Py3DMOL object 
+        Already existing Py3DMOL object, which can be created using the makeobj function.
+    bxc: List of Integers of len 3, default [0,0,0]
+        Are the x,y,z coordinates of the center of the box in Angstroms
+    bxd: List of Integers of len 3, default [10,10,10]
+        Are the x,y,z dimensions of the box in Angstroms
+    boxColor: String, default 'blue'
+        Is the color of the box
+    boxOpacity: String, default 0.5
+        Is the opacity of the box
     
+    Returns
+    -------
+    None.
+    """
+    obj.addBox({
+        'center':{'x':bxc[0],'y':bxc[1],'z':bxc[2]},
+        'dimensions': {'w':bxd[0],'h':bxd[1],'d':bxd[2]},
+        'color':boxColor,
+        'opacity': boxOpacity
+        })
+
+def add_sphere(obj,spcenter=[0,0,0],radius=10,spColor='blue'):
+    """
+    Adds a sphere to an existing Py3DMOL object.
+    Example:
+        obj = render_pdb()
+        add_sphere(obj)
+        showmol(obj)
+
+    Parameters
+    ----------
+    obj: Py3DMOL object 
+        Already existing Py3DMOL object, which can be created using the makeobj function.
+    spcenter: List of Integers of len 3, default [0,0,0].
+        Are the x,y,z coordinates of the center of the sphere in Angstroms
+    radius: integer, default 10
+        Is the radius of the sphere in Angstroms.
+    spColor: String, default 'blue'
+        Is the color of the sphere.
     
+    Returns
+    -------
+    None.
+    """
+    obj.addSphere({
+        'center':{'x':spcenter[0],'y':spcenter[1],'z':spcenter[2]},
+        'radius':radius,
+        'color':spColor
+        })
 
+def add_cylinder(obj,start=[0,0,0],end=[0,0,1],cylradius=1,cylColor='blue',dashed=True):
+    """
+    Adds a cylinder to an existing Py3DMOL object.
+    Example:
+        obj = render_pdb()
+        add_cylinder(obj,end=[0,0,10])
+        showmol(obj)
 
-
-
-# Add some test code to play with the component while it's in development.
-# During development, we can run this just as we would any other Streamlit
-# app: `$ streamlit run my_component/__init__.py`
-if not _RELEASE:
-    import streamlit as st
-
-
-    num_clicks = my_component("Title1","Subtitle","some random text","https://www.google.com","blue")
+    Parameters
+    ----------
+    obj: Py3DMOL object
+        Already existing Py3DMOL object, which can be created using the makeobj function.
+    start: List of Integers of len 3, default [0,0,0]
+        Are the x,y,z coordinates of the start of the cylinder in Angstroms.
+    end: List of Integers of len 3, default [0,0,1]
+        Are the x,y,z coordinates of the end of the cylinder in Angstroms.
+    cylradius: integer, default 1
+        Is the radius of the cylinder in Angstroms.
+    cylColor: String, default 'blue'
+        Is the color of the cylinder.
+    dashed: Boolean, default True
+        True for a cylinder dashed. False for a solid cylinder.
     
+    Returns
+    -------
+    None.
+    """
 
+    obj.addCylinder({
+        'start':{'x':start[0],'y':start[1],'z':start[2]},
+        'end':{'x':end[0],'y':end[1],'z':end[2]},
+        'radius':cylradius,
+        'fromCap':True,
+        'toCap':True,
+        'color':cylColor,
+        'dashed':dashed
 
-
+        })
