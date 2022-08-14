@@ -90,6 +90,6 @@ We appreciate contributions from the community! Every little bit helps, and cred
 - **Submit Feedback** - The best way to send feedback is to file an issue at https://github.com/napoles-uach/stmol/issues
 --------------
 ## Authors
-- J. M. N  ́apoles-Duarte <jnapoles@uach.mx>
+- J. M. Nápoles-Duarte <jnapoles@uach.mx>
 - Avratanu Biswas <avratanu.biswas@brc.hu>
 - Mitchell I. Parker <mip34@drexel.edu>
