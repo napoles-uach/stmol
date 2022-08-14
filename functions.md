@@ -1,5 +1,4 @@
-``` python
-showmol(obj,height=500,width=500)
+### showmol(obj,height=500,width=500)
     """Shows the Py3DMOL object.
 
     Parameters
@@ -16,11 +15,7 @@ showmol(obj,height=500,width=500)
     None.
     """
 
-speck_plot(_xyz, wbox_height="700px", 
-            wbox_width="800px",
-            component_h = 700, 
-            component_w = 800, 
-            scroll = False)
+#### speck_plot(_xyz, wbox_height="700px", wbox_width="800px",component_h = 700, component_w = 800, scroll = False)
     """ Plots the speckmol molecule using the ipyspeck library and returns 
         the <class 'ipyspeck.speck.Speck'>.
     
@@ -48,7 +43,7 @@ speck_plot(_xyz, wbox_height="700px",
         These keys are useful for modifying the molecule.
     """      
 
-makeobj(xyz,molformat='mol',style='stick',background='white')
+### makeobj(xyz,molformat='mol',style='stick',background='white')
     """
     makeobj function accepts a molecule structure in a given format and returns a Py3DMOL molecule object.
     Accepted formats are 'mol', 'sdf', 'pdb', 'pqr', 'xyz'.
@@ -68,7 +63,7 @@ makeobj(xyz,molformat='mol',style='stick',background='white')
     -------
     obj: Py3DMOL object
     """
-render_pdb(id='7T59')
+### render_pdb(id='7T59')
     """
     render_pdb function accepts a PDB ID and returns a Py3DMOL object.
 
@@ -81,7 +76,7 @@ render_pdb(id='7T59')
     -------
     obj: Py3DMOL object
     """
-render_pdb_resn(viewer,resn_lst)
+### render_pdb_resn(viewer,resn_lst)
     """
     render_pdb_resn function accepts a Py3DMOL object and adds a list of PDB resn labels to it.
 
@@ -95,7 +90,7 @@ render_pdb_resn(viewer,resn_lst)
     -------
     obj: Py3DMOL object
     """
-render_pdb_resi(viewer,resi_lst)
+### render_pdb_resi(viewer,resi_lst)
     """
     render_pdb_resi function accepts a Py3DMOL object and adds a list of PDB resi labels to it.
 
@@ -109,7 +104,7 @@ render_pdb_resi(viewer,resi_lst)
     -------
     obj: Py3DMOL object
     """
-obj_upload(uploaded_file)
+### obj_upload(uploaded_file)
     """
     obj_upload function accepts a file uploaded with streamlit file_uploader function and returns a Py3DMOL object.
     Accepted formats are 'mol', 'sdf', 'pdb', 'pqr', 'xyz'.
@@ -126,7 +121,7 @@ obj_upload(uploaded_file)
     -------
     obj: Py3DMOL object
     """
-add_model(obj,xyz,molformat='mol',model_style='stick')
+### add_model(obj,xyz,molformat='mol',model_style='stick')
     """
     Adds a model to an existing Py3DMOL object.
     
@@ -145,7 +140,7 @@ add_model(obj,xyz,molformat='mol',model_style='stick')
     -------
     None.
     """
-add_hover(obj,backgroundColor='white',fontColor='black')
+### add_hover(obj,backgroundColor='white',fontColor='black')
     """
     Adds a hover function to the Py3DMOL object to show the atom name when the mouse hovers over an atom.
 
@@ -162,7 +157,7 @@ add_hover(obj,backgroundColor='white',fontColor='black')
     -------
     None.
     """
-add_box(obj,bxc=[0,0,0],bxd=[10,10,10],boxColor='blue',boxOpacity=0.5)
+### add_box(obj,bxc=[0,0,0],bxd=[10,10,10],boxColor='blue',boxOpacity=0.5)
     """Adds a box to an existing Py3DMOL object.
 
     Parameters
@@ -182,7 +177,7 @@ add_box(obj,bxc=[0,0,0],bxd=[10,10,10],boxColor='blue',boxOpacity=0.5)
     -------
     None.
     """
-add_sphere(obj,spcenter=[0,0,0],radius=10,spColor='blue')
+### add_sphere(obj,spcenter=[0,0,0],radius=10,spColor='blue')
     """Adds a sphere to an existing Py3DMOL object.
 
     Parameters
@@ -200,7 +195,7 @@ add_sphere(obj,spcenter=[0,0,0],radius=10,spColor='blue')
     -------
     None.
     """
-add_cylinder(obj,start=[0,0,0],end=[0,0,1],cylradius=1,cylColor='blue')
+### add_cylinder(obj,start=[0,0,0],end=[0,0,1],cylradius=1,cylColor='blue')
     """Adds a cylinder to an existing Py3DMOL object.
 
     Parameters
@@ -222,7 +217,7 @@ add_cylinder(obj,start=[0,0,0],end=[0,0,1],cylradius=1,cylColor='blue')
     -------
     None.
     """
-```
+
 
 
 
