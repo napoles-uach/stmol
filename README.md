@@ -62,8 +62,8 @@ showmol(render_pdb(id = '1A2C'))
 ```
 ![Quickstart-1](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-1.png)
 
-##### 2. Labelling protein using `render_pdb()`function 
-Inorder to mark the residues, we can use the `render_pdb()` function, which in this example marks the *Alanine* [ALA] residues,
+##### 2. Labelling protein using `render_pdb_resn()`function 
+Inorder to mark the residues, we can use the `render_pdb_resn()` function, which in this example marks the *Alanine* [ALA] residues,
 ```python
 showmol(render_pdb_resn(viewer = render_pdb(id = '1A2C'),resn_lst = ['ALA',]))
 ```
