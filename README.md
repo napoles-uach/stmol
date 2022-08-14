@@ -1,42 +1,86 @@
-# st(reamlit_3d)mol
-This project aims to provide an easy way to create a web app for interacting with molecular structures using Streamlit. 
-Use `showmol` function to render py3Dmol objects!
+# Stmol
+A component for building interactive molecular visualizations within Streamlit web-applications. It is designed to provide a state of the art visualizing and rendering 3D molecular structures for researchers, in a user-friendly manner.
 
+------------------------------
+## Stmol features 
 
-## Installation
+- An easy-to-use component for rendering interactive 3D molecular visualizations of protein and ligand structures within Streamlit web-apps
+- `stmol` can render protein and ligand structures with just a few lines of Python code by utilizing popular visualization libraries, currently Py3DMol and Speck. 
+- On the user-end, `stmol` does not require expertise to interactively navigate. 
+- On the developer-end, `stmol` can be easily integrated within structural bioinformatic and cheminformatic pipelines to provide a simple means for user-end researchers to advance biological studies and drug discovery efforts.
+------------------------------
 
-```python
-pip install py3Dmol
-pip install stmol==0.0.7
+## Stmol installation
+
+`stmol` runs with traditional Python stack.
+To install `stmol` from [pypi](https://pypi.org/project/stmol/), run this command in your terminal:
+
+``` console
+pip install stmol==0.0.9
 ```
 
-## Example
+Since the end goal of `stmol` plugin, is to ebnable easy rendering of molecular structure within the streamlit applicaton, libraries such as 
+[streamlit](https://github.com/streamlit/streamlit) and [py3Dmol](https://pypi.org/project/py3Dmol/) are crucial to work with. 
+Run this command in your terminal to install the latest release of Streamlit,
+``` console
+pip install streamlit
+```
+Run this command in your terminal to install the latest release of py3Dmol,
+``` console
+pip install py3Dmol
+```
+A recent addition to `stmol` project, in a form of static HTML wrapper is the `speck_plot()` function, which helps in rendering [Speck](https://github.com/wwwtyro/speck) structures within the Streamlit web-application, is dependent on the following libraries, 
+```console
+ipyspeck(==0.6.1)
+ipywidgets(==7.6.3)
+```
 
+-----------------
+
+## Quickstart
+
+##### Protein visualization using `showmol()`function 
+
+- **Using `py3Dmol object`**
+
+To visualize any protein structure, all we need is the PDB ID of the protein.
 ```python
-import streamlit as st
 from stmol import showmol
 import py3Dmol
-st.sidebar.title('Show Proteins')
-prot_str='1A2C,1BML,1D5M,1D5X,1D5Z,1D6E,1DEE,1E9F,1FC2,1FCC,1G4U,1GZS,1HE1,1HEZ,1HQR,1HXY,1IBX,1JBU,1JWM,1JWS'
-prot_list=prot_str.split(',')
-bcolor = st.sidebar.color_picker('Pick A Color', '#00f900')
-protein=st.sidebar.selectbox('select protein',prot_list)
-style = st.sidebar.selectbox('style',['line','cross','stick','sphere','cartoon','clicksphere'])
-xyzview = py3Dmol.view(query='pdb:'+protein)
-xyzview.setStyle({style:{'color':'spectrum'}})
-xyzview.setBackgroundColor(bcolor)
+# 1A2C
+# Structure of thrombin inhibited by AERUGINOSIN298-A from a BLUE-GREEN ALGA
+xyzview = py3Dmol.view(query='pdb:1A2C') 
+xyzview.setStyle({'cartoon':{'color':'spectrum'}})
 showmol(xyzview, height = 500,width=800)
 ```
+- **Using the `render_pdb()` function**
 
+The `render_pdb()` function accepts any PDB ID and returns a py3Dmol object. 
+```python
+from stmol import *
+showmol(render_pdb(id = '1A2C'))
+```
+![Quickstart-1](https://github.com/avrabyt/stmol/blob/master/Resources/Quickstart-1.png)
 
+##### Labelling protein using `render_pdb()`function 
+Inorder to mark the residues, we can use the `render_pdb()` function, which in this example marks the *Alanine* [ALA] residues,
+```python
+showmol(render_pdb_resn(viewer = render_pdb(id = '1A2C'),resn_lst = ['ALA',]))
+```
+![Quickstart-1](https://github.com/avrabyt/stmol/blob/master/Resources/Quickstart-1.png)
 
-![gif](https://github.com/avrabyt/stmol/blob/master/Resources/demo.gif)
+----------------
+## Dependencies
+- [py3Dmol](https://pypi.org/project/py3Dmol/) 
+- [ipyspeck](https://pypi.org/project/ipyspeck/)
+- [ipywidgets](https://github.com/jupyter-widgets/ipywidgets)
+- [streamlit](https://github.com/streamlit/streamlit)
+-----------------
 
-Check the blogpost https://towardsdatascience.com/molecular-visualization-in-streamlit-using-rdkit-and-py3dmol-part-2-657d28152753
-## Acknowledgment
-If this software is useful in your work, please star this repo :star:
-<p>
-https://github.com/napoles-uach/streamlit_3dmol
-<p>
-Thanks to the authors of 3Dmol.js : Nicholas Rego and David Koes.
+## Contribution to the project
+We appreciate contributions from the community! Every little bit helps, and credit will always be given. 
+- **Reporting Bugs** - Report bugs at https://github.com/napoles-uach/stmol/issues
+- **Fix Bugs** - Look through the GitHub issues for bugs. Anything tagged with “bug” and “help wanted” is open to whoever wants to help with it.
+- **Implement Features** - Look through the GitHub issues for features. Anything tagged with “enhancement” and “help wanted” is open to whoever wants to implement it.
+- **Submit Feedback** - The best way to send feedback is to file an issue at https://github.com/napoles-uach/stmol/issues
 
