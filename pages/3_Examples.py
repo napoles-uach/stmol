@@ -91,4 +91,6 @@ with tab2:
 
     with tab3 :
         with st.echo():
-            showmol(render_pdb_resn(viewer = render_pdb(id = '1A2C'),resn_lst = ['ALA',]))
+            showmol(render_pdb_resn(viewer = render_pdb(id = '1A2C'),resn_lst = ['ALA',]),height=700,width=700)
+
+        

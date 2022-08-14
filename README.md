@@ -39,7 +39,7 @@ ipywidgets(==7.6.3)
 
 ## Quickstart
 
-##### Protein visualization using `showmol()`function 
+##### 1. Protein visualization using `showmol()`function 
 
 - **Using `py3Dmol object`**
 
@@ -60,14 +60,19 @@ The `render_pdb()` function accepts any PDB ID and returns a py3Dmol object.
 from stmol import *
 showmol(render_pdb(id = '1A2C'))
 ```
-![Quickstart-1](https://github.com/avrabyt/stmol/blob/master/Resources/Quickstart-1.png)
+![Quickstart-1](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-1.png)
 
-##### Labelling protein using `render_pdb()`function 
+##### 2. Labelling protein using `render_pdb()`function 
 Inorder to mark the residues, we can use the `render_pdb()` function, which in this example marks the *Alanine* [ALA] residues,
 ```python
 showmol(render_pdb_resn(viewer = render_pdb(id = '1A2C'),resn_lst = ['ALA',]))
 ```
-![Quickstart-1](https://github.com/avrabyt/stmol/blob/master/Resources/Quickstart-1.png)
+![Quickstart-1](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-2.png)
+
+###### Refer to the documentation [here](https://napoles-uach-stmol-home-pom051.streamlitapp.com/Documentation) 
+----------
+### Examples
+You can find several `stmol` examples [here](https://napoles-uach-stmol-home-pom051.streamlitapp.com/Examples).
 
 ----------------
 ## Dependencies
@@ -83,4 +88,8 @@ We appreciate contributions from the community! Every little bit helps, and cred
 - **Fix Bugs** - Look through the GitHub issues for bugs. Anything tagged with “bug” and “help wanted” is open to whoever wants to help with it.
 - **Implement Features** - Look through the GitHub issues for features. Anything tagged with “enhancement” and “help wanted” is open to whoever wants to implement it.
 - **Submit Feedback** - The best way to send feedback is to file an issue at https://github.com/napoles-uach/stmol/issues
-
+--------------
+## Authors
+- J. M. N  ́apoles-Duarte <jnapoles@uach.mx>
+- Avratanu Biswas <avratanu.biswas@brc.hu>
+- Mitchell I. Parker <mip34@drexel.edu>
