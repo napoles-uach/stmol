@@ -62,8 +62,8 @@ showmol(render_pdb(id = '1A2C'))
 ```
 ![Quickstart-1](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-1.png)
 
-##### 2. Labelling protein using `render_pdb()`function 
-Inorder to mark the residues, we can use the `render_pdb()` function, which in this example marks the *Alanine* [ALA] residues,
+##### 2. Labelling protein using `render_pdb_resn()`function 
+Inorder to annotate the residues, we can use the `render_pdb()` function, for example *Alanine* [ALA] residues,here,
 ```python
 showmol(render_pdb_resn(viewer = render_pdb(id = '1A2C'),resn_lst = ['ALA',]))
 ```
@@ -80,7 +80,8 @@ You can find several `stmol` examples [here](https://napoles-uach-stmol-home-pom
 - [ipyspeck](https://pypi.org/project/ipyspeck/)
 - [ipywidgets](https://github.com/jupyter-widgets/ipywidgets)
 - [streamlit](https://github.com/streamlit/streamlit)
------------------
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://napoles-uach-stmol-home-pom051.streamlitapp.com)
 
 ## Contribution to the project
 We appreciate contributions from the community! Every little bit helps, and credit will always be given. 
