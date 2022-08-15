@@ -71,8 +71,12 @@ showmol(render_pdb_resn(viewer = render_pdb(id = '1A2C'),resn_lst = ['ALA',]))
 
 ###### Refer to the documentation [here](https://napoles-uach-stmol-home-pom051.streamlitapp.com/Documentation) 
 ----------
-### Examples
+## Examples
 You can find several `stmol` examples [here](https://napoles-uach-stmol-home-pom051.streamlitapp.com/Examples).
+
+### Browser support
+- Chrome, Edge, Firefox - [link](https://napoles-uach.github.io/stmol/)
+- Safari - [link](https://napoles-uach-stmol-home-pom051.streamlitapp.com)
 
 ----------------
 ## Dependencies
