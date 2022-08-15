@@ -12,7 +12,7 @@ with tab1:
         prot_list=prot_str.split(',')
         bcolor = st.color_picker('Pick A Color','#89cff0')
         protein=st.selectbox('select protein',prot_list)
-        style = st.selectbox('style',['cartoon','line','cross','stick','sphere','clicksphere'])
+        style = st.selectbox('style',['cartoon','line','cross','stick','sphere'])
         xyzview = py3Dmol.view(query='pdb:'+protein)
         xyzview.setStyle({style:{'color':'spectrum'}})
         xyzview.setBackgroundColor(bcolor)
