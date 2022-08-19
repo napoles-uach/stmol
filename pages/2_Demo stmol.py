@@ -5,6 +5,9 @@ import streamlit as st
 import py3Dmol
 from stmol import showmol
 
+st.sidebar.markdown('''
+    [![GitHub](https://badgen.net/badge/icon/GitHub?icon=github&color=black&label)](https://github.com/napoles-uach/stmol/blob/master/pages/2_Demo%20stmol.py)
+    ''')  
 ### Step 2) Streamlit
 
 st.sidebar.title("View Settings")

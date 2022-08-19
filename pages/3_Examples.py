@@ -3,6 +3,10 @@ import streamlit as st
 from stmol import *
 import py3Dmol
 import glob  
+
+st.sidebar.markdown('''
+    [![GitHub](https://badgen.net/badge/icon/GitHub?icon=github&color=black&label)](https://github.com/napoles-uach/stmol/blob/master/pages/3_Examples.py)
+    ''')  
 tab1,tab2, tab3 = st.tabs(['Example-1 py3Dmol','Example-2 Speck', 'Example-3 stmol-extras'])
 
 with tab1:  
