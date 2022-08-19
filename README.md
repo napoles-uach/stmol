@@ -67,7 +67,7 @@ Inorder to mark the residues, we can use the `render_pdb_resn()` function, which
 ```python
 showmol(render_pdb_resn(viewer = render_pdb(id = '1A2C'),resn_lst = ['ALA',]))
 ```
-![Quickstart-1](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-2.png)
+![Quickstart-2](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-2.png)
 
 ###### Refer to the documentation [here](https://napoles-uach-stmol-home-pom051.streamlitapp.com/Documentation) 
 ----------
