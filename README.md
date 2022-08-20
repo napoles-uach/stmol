@@ -19,7 +19,7 @@ To install `stmol` from [pypi](https://pypi.org/project/stmol/), run this comman
 pip install stmol==0.0.9
 ```
 
-Since the end goal of `stmol` plugin, is to ebnable easy rendering of molecular structure within the streamlit applicaton, libraries such as 
+Since the end goal of `stmol` plugin, is to enable easy rendering of molecular structure within the streamlit applicaton, libraries such as 
 [streamlit](https://github.com/streamlit/streamlit) and [py3Dmol](https://pypi.org/project/py3Dmol/) are crucial to work with. 
 Run this command in your terminal to install the latest release of Streamlit,
 ``` console
@@ -60,14 +60,14 @@ The `render_pdb()` function accepts any PDB ID and returns a py3Dmol object.
 from stmol import *
 showmol(render_pdb(id = '1A2C'))
 ```
-![Quickstart-1](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-1.png)
+[![Quickstart-1](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-1.png)](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-1.png)
 
 ##### 2. Labelling protein using `render_pdb_resn()`function 
 Inorder to mark the residues, we can use the `render_pdb_resn()` function, which in this example marks the *Alanine* [ALA] residues,
 ```python
 showmol(render_pdb_resn(viewer = render_pdb(id = '1A2C'),resn_lst = ['ALA',]))
 ```
-![Quickstart-2](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-2.png)
+[![Quickstart-2](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-2.png)](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-2.png)
 
 ###### Refer to the documentation [here](https://napoles-uach-stmol-home-pom051.streamlitapp.com/Documentation) 
 ----------
