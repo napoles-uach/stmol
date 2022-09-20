@@ -97,3 +97,7 @@ We appreciate contributions from the community! Every little bit helps, and cred
 - J. M. Nápoles-Duarte <jnapoles@uach.mx>
 - Avratanu Biswas <avratanu.biswas@brc.hu>
 - Mitchell I. Parker <mip34@drexel.edu>
+
+## Aknowledgements
+We thank the authors of 3dmol.js and py3Dmol.
+Nicholas Rego, David Koes, 3Dmol.js: molecular visualization with WebGL, Bioinformatics, Volume 31, Issue 8, 15 April 2015, Pages 1322–1324, https://doi.org/10.1093/bioinformatics/btu829
