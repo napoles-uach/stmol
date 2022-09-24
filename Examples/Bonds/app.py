@@ -8,7 +8,7 @@ scene=py3Dmol.view(width=800,height=800) # Create a scene by defining a blank vi
 add_cylinder(scene,start=[0,0,0],end=[0,10,0],cylradius=0.5,cylColor='blue',dashed=False) # Add a cylinder (bond)
 add_cylinder(scene,start=[0,0,0],end=[10,0,0],cylradius=0.5,cylColor='green',dashed=True) # Add a cylinder (dashed bond)
 
-#add spheres at the ends of the cylinders
+#add spheres at the end of the cylinders
 add_sphere(scene,spcenter=[0,0,0],radius=2,spColor='red')
 add_sphere(scene,spcenter=[0,10,0],radius=2,spColor='red')
 add_sphere(scene,spcenter=[10,0,0],radius=3,spColor='purple')
