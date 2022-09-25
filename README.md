@@ -104,6 +104,11 @@ Nicholas Rego, David Koes, 3Dmol.js: molecular visualization with WebGL, Bioinfo
 
 ## How to cite
 Please include this if Stmol is used in an academic study:
+
+Nápoles-Duarte JM, Biswas A, Parker MI, Palomares-Baez JP, Chávez-Rojo MA and Rodríguez-Valdez LM (2022) Stmol: A component for building interactive molecular visualizations within streamlit web-applications. Front. Mol. Biosci. 9:990846. doi: 10.3389/fmolb.2022.990846
+
+Or use the following bibtex format,
+```
 @ARTICLE{stmol,
   
 AUTHOR={Nápoles-Duarte, J.M. and Biswas, Avratanu and Parker, Mitchell I. and Palomares-Baez, J.P. and Chávez-Rojo, M. A. and Rodríguez-Valdez, L. M.},   
@@ -122,3 +127,5 @@ DOI={10.3389/fmolb.2022.990846},
 	
 ISSN={2296-889X},   
 }
+```
+
