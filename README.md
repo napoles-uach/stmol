@@ -101,3 +101,24 @@ We appreciate contributions from the community! Every little bit helps, and cred
 ## Aknowledgments
 We thank the authors of 3dmol.js and py3Dmol.
 Nicholas Rego, David Koes, 3Dmol.js: molecular visualization with WebGL, Bioinformatics, Volume 31, Issue 8, 15 April 2015, Pages 1322–1324, https://doi.org/10.1093/bioinformatics/btu829
+
+## How to cite
+Please include this if Stmol is used in an academic study:
+@ARTICLE{stmol,
+  
+AUTHOR={Nápoles-Duarte, J.M. and Biswas, Avratanu and Parker, Mitchell I. and Palomares-Baez, J.P. and Chávez-Rojo, M. A. and Rodríguez-Valdez, L. M.},   
+	 
+TITLE={Stmol: A component for building interactive molecular visualizations within streamlit web-applications},      
+	
+JOURNAL={Frontiers in Molecular Biosciences},      
+	
+VOLUME={9},           
+	
+YEAR={2022},      
+	  
+URL={https://www.frontiersin.org/articles/10.3389/fmolb.2022.990846},       
+	
+DOI={10.3389/fmolb.2022.990846},      
+	
+ISSN={2296-889X},   
+}
