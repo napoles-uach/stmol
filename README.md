@@ -1,4 +1,5 @@
 # Stmol
+[ ![](https://img.shields.io/badge/Paper-Frontiers-red) ](https://www.frontiersin.org/articles/10.3389/fmolb.2022.990846/full)\
 A component for building interactive molecular visualizations within Streamlit web-applications. It is designed to provide a state of the art visualizing and rendering 3D molecular structures for researchers, in a user-friendly manner.
 
 ------------------------------
