@@ -61,7 +61,7 @@ The `render_pdb()` function accepts any PDB ID and returns a py3Dmol object.
 from stmol import *
 showmol(render_pdb(id = '1A2C'))
 ```
-[![Quickstart-1](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-1.png)](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-1.png)
+[![Quickstart-1](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-1.gif)](https://github.com/napoles-uach/stmol/blob/master/Resources/Quickstart-1.gif)
 
 ##### 2. Labelling protein using `render_pdb_resn()`function 
 Inorder to mark the residues, we can use the `render_pdb_resn()` function, which in this example marks the *Alanine* [ALA] residues,
