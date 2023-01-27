@@ -3,6 +3,10 @@
 A component for building interactive molecular visualizations within Streamlit web-applications. It is designed to provide a state of the art visualizing and rendering 3D molecular structures for researchers, in a user-friendly manner.
 
 ------------------------------
+## Note: Due to recent changes in the 3Dmol.js package, it is recomended to install py3DMol in the following way,
+```
+pip install py3Dmol==2.0.0.post2
+```
 ## Stmol features 
 
 - An easy-to-use component for rendering interactive 3D molecular visualizations of protein and ligand structures within Streamlit web-apps
