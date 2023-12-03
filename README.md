@@ -38,6 +38,7 @@ A recent addition to `stmol` project, in a form of static HTML wrapper is the `s
 ```console
 ipyspeck(==0.6.1)
 ipywidgets(==7.6.3)
+ipython_genutils
 ```
 
 -----------------
@@ -89,6 +90,7 @@ You can find several `stmol` examples [here](https://napoles-uach-stmol-home-pom
 - [ipyspeck](https://pypi.org/project/ipyspeck/)
 - [ipywidgets](https://github.com/jupyter-widgets/ipywidgets)
 - [streamlit](https://github.com/streamlit/streamlit)
+- [ipython_genutils](https://github.com/ipython/ipython_genutils)
 -----------------
 
 ## Contribution to the project
