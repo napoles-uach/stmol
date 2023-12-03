@@ -21,5 +21,6 @@ setuptools.setup(
         "py3Dmol",
         "ipyspeck==0.6.1", 
         "ipywidgets==7.6.3"
+        "ipython_genutils",
     ],
 )
